@@ -1,0 +1,5 @@
+_assetic:
+    resource: .
+    type: assetic
+_app:
+    resource: /info/etu/l3spi/spi3012/web/Symfony/app/config/routing_dev.yml

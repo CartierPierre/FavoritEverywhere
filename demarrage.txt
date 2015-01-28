@@ -1,0 +1,5 @@
+ssh spi3012@iupdata4
+
+cd web/FavoritEverywhere/Symphony
+
+php app/console server:run 0.0.0.0:3012
