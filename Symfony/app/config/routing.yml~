@@ -1,0 +1,7 @@
+favorit_everywhere_favoris:
+    resource: "@FavoritEverywhereFavorisBundle/Resources/config/routing.yml"
+    prefix:   /
+
+app:
+    resource: @AppBundle/Controller/
+    type:     annotation

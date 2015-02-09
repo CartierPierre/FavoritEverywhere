@@ -1,0 +1,3 @@
+fe_account_homepage:
+    path:     /hello/{name}
+    defaults: { _controller: FEAccountBundle:Default:index }
