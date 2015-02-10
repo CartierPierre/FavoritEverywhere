@@ -17,6 +17,8 @@
       <parameter key="DoctrineBundle">Doctrine\Bundle\DoctrineBundle\DoctrineBundle</parameter>
       <parameter key="SensioFrameworkExtraBundle">Sensio\Bundle\FrameworkExtraBundle\SensioFrameworkExtraBundle</parameter>
       <parameter key="FEAccountBundle">FE\AccountBundle\FEAccountBundle</parameter>
+      <parameter key="FEFavorisBundle">FE\FavorisBundle\FEFavorisBundle</parameter>
+      <parameter key="FEGeneralBundle">FE\GeneralBundle\FEGeneralBundle</parameter>
       <parameter key="DebugBundle">Symfony\Bundle\DebugBundle\DebugBundle</parameter>
       <parameter key="WebProfilerBundle">Symfony\Bundle\WebProfilerBundle\WebProfilerBundle</parameter>
       <parameter key="SensioDistributionBundle">Sensio\Bundle\DistributionBundle\SensioDistributionBundle</parameter>
@@ -2955,6 +2957,14 @@
       <call method="addPath">
         <argument>/info/etu/etuic2/l3spi/spi3012/web/FavoritEverywhere/Symfony/src/FE/AccountBundle/Resources/views</argument>
         <argument>FEAccount</argument>
+      </call>
+      <call method="addPath">
+        <argument>/info/etu/etuic2/l3spi/spi3012/web/FavoritEverywhere/Symfony/src/FE/FavorisBundle/Resources/views</argument>
+        <argument>FEFavoris</argument>
+      </call>
+      <call method="addPath">
+        <argument>/info/etu/etuic2/l3spi/spi3012/web/FavoritEverywhere/Symfony/src/FE/GeneralBundle/Resources/views</argument>
+        <argument>FEGeneral</argument>
       </call>
       <call method="addPath">
         <argument>/info/etu/etuic2/l3spi/spi3012/web/FavoritEverywhere/Symfony/vendor/symfony/symfony/src/Symfony/Bundle/DebugBundle/Resources/views</argument>

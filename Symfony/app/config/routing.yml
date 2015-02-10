@@ -1,11 +1,11 @@
+fe_general:
+    resource: "@FEGeneralBundle/Resources/config/routing.yml"
+    prefix:   /
+
 fe_favoris:
     resource: "@FEFavorisBundle/Resources/config/routing.yml"
     prefix:   /
 
 fe_account:
     resource: "@FEAccountBundle/Resources/config/routing.yml"
-    prefix:   /
-
-favorit_everywhere_favoris:
-    resource: "@FavoritEverywhereFavorisBundle/Resources/config/routing.yml"
     prefix:   /

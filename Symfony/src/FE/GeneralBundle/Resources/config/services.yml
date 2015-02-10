@@ -1,0 +1,4 @@
+services:
+#    fe_general.example:
+#        class: FE\GeneralBundle\Example
+#        arguments: [@service_id, "plain_value", %parameter%]

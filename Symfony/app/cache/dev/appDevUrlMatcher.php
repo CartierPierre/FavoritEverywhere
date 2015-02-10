@@ -127,30 +127,22 @@ class appDevUrlMatcher extends Symfony\Bundle\FrameworkBundle\Routing\Redirectab
 
         }
 
-        if (0 === strpos($pathinfo, '/favoris')) {
-            // fe_favoris_home
-            if ($pathinfo === '/favoris') {
-                return array (  '_controller' => 'FavoritEverywhere\\FavorisBundle\\Controller\\AdvertController::indexAction',  '_route' => 'fe_favoris_home',);
+        if (0 === strpos($pathinfo, '/hello')) {
+            // fe_general_homepage
+            if (preg_match('#^/hello/(?P<name>[^/]++)$#s', $pathinfo, $matches)) {
+                return $this->mergeDefaults(array_replace($matches, array('_route' => 'fe_general_homepage')), array (  '_controller' => 'FE\\GeneralBundle\\Controller\\DefaultController::indexAction',));
             }
 
-            if (0 === strpos($pathinfo, '/favoris/ad')) {
-                // fe_favoris_view
-                if (0 === strpos($pathinfo, '/favoris/advert') && preg_match('#^/favoris/advert/(?P<id>[^/]++)$#s', $pathinfo, $matches)) {
-                    return $this->mergeDefaults(array_replace($matches, array('_route' => 'fe_favoris_view')), array (  '_controller' => 'FavoritEverywhere\\FavorisBundle\\Controller\\AdvertController::viewAction',));
-                }
-
-                // fe_favoris_add
-                if ($pathinfo === '/favoris/add') {
-                    return array (  '_controller' => 'FavoritEverywhere\\FavorisBundle\\Controller\\AdvertController::addAction',  '_route' => 'fe_favoris_add',);
-                }
-
+            // fe_favoris_homepage
+            if (preg_match('#^/hello/(?P<name>[^/]++)$#s', $pathinfo, $matches)) {
+                return $this->mergeDefaults(array_replace($matches, array('_route' => 'fe_favoris_homepage')), array (  '_controller' => 'FE\\FavorisBundle\\Controller\\DefaultController::indexAction',));
             }
 
-        }
+            // fe_account_homepage
+            if (preg_match('#^/hello/(?P<name>[^/]++)$#s', $pathinfo, $matches)) {
+                return $this->mergeDefaults(array_replace($matches, array('_route' => 'fe_account_homepage')), array (  '_controller' => 'FE\\AccountBundle\\Controller\\DefaultController::indexAction',));
+            }
 
-        // fe_favoris_test
-        if (0 === strpos($pathinfo, '/test') && preg_match('#^/test/(?P<nom>[^/]++)$#s', $pathinfo, $matches)) {
-            return $this->mergeDefaults(array_replace($matches, array('_route' => 'fe_favoris_test')), array (  '_controller' => 'FavoritEverywhere\\FavorisBundle\\Controller\\AdvertController::testAction',));
         }
 
         throw 0 < count($allow) ? new MethodNotAllowedException(array_unique($allow)) : new ResourceNotFoundException();
