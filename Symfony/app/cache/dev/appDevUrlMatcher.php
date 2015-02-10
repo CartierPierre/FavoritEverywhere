@@ -127,22 +127,23 @@ class appDevUrlMatcher extends Symfony\Bundle\FrameworkBundle\Routing\Redirectab
 
         }
 
-        if (0 === strpos($pathinfo, '/hello')) {
-            // fe_general_homepage
-            if (preg_match('#^/hello/(?P<name>[^/]++)$#s', $pathinfo, $matches)) {
-                return $this->mergeDefaults(array_replace($matches, array('_route' => 'fe_general_homepage')), array (  '_controller' => 'FE\\GeneralBundle\\Controller\\DefaultController::indexAction',));
+        // fe_general_accueil
+        if (rtrim($pathinfo, '/') === '') {
+            if (substr($pathinfo, -1) !== '/') {
+                return $this->redirect($pathinfo.'/', 'fe_general_accueil');
             }
 
-            // fe_favoris_homepage
-            if (preg_match('#^/hello/(?P<name>[^/]++)$#s', $pathinfo, $matches)) {
-                return $this->mergeDefaults(array_replace($matches, array('_route' => 'fe_favoris_homepage')), array (  '_controller' => 'FE\\FavorisBundle\\Controller\\DefaultController::indexAction',));
-            }
+            return array (  '_controller' => 'FE\\GeneralBundle\\Controller\\AccueilController::indexAction',  '_route' => 'fe_general_accueil',);
+        }
 
-            // fe_account_homepage
-            if (preg_match('#^/hello/(?P<name>[^/]++)$#s', $pathinfo, $matches)) {
-                return $this->mergeDefaults(array_replace($matches, array('_route' => 'fe_account_homepage')), array (  '_controller' => 'FE\\AccountBundle\\Controller\\DefaultController::indexAction',));
-            }
+        // fe_favoris_homepage
+        if (0 === strpos($pathinfo, '/favoris/hello') && preg_match('#^/favoris/hello/(?P<name>[^/]++)$#s', $pathinfo, $matches)) {
+            return $this->mergeDefaults(array_replace($matches, array('_route' => 'fe_favoris_homepage')), array (  '_controller' => 'FE\\FavorisBundle\\Controller\\DefaultController::indexAction',));
+        }
 
+        // fe_account_homepage
+        if (0 === strpos($pathinfo, '/account/hello') && preg_match('#^/account/hello/(?P<name>[^/]++)$#s', $pathinfo, $matches)) {
+            return $this->mergeDefaults(array_replace($matches, array('_route' => 'fe_account_homepage')), array (  '_controller' => 'FE\\AccountBundle\\Controller\\DefaultController::indexAction',));
         }
 
         throw 0 < count($allow) ? new MethodNotAllowedException(array_unique($allow)) : new ResourceNotFoundException();
