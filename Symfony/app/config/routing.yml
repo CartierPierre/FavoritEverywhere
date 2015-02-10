@@ -4,8 +4,8 @@ fe_general:
 
 fe_favoris:
     resource: "@FEFavorisBundle/Resources/config/routing.yml"
-    prefix:   /
+    prefix:   /favoris
 
 fe_account:
     resource: "@FEAccountBundle/Resources/config/routing.yml"
-    prefix:   /
+    prefix:   /account
