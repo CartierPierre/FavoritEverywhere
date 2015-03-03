@@ -2,12 +2,57 @@
 <html>
     <head>
         <meta charset="UTF-8" />
-        <title>{% block title %}Welcome!{% endblock %}</title>
-        {% block stylesheets %}{% endblock %}
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>{% block title %}Favorite Everywhere{% endblock %}</title>
+        {% block stylesheets %}
+            {# On charge le CSS de bootstrap depuis le site directement #}
+            <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+        {% endblock %}
         <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
     </head>
-    <body>
-        {% block body %}{% endblock %}
+
+    <body>   
+        <nav class="navbar navbar-inverse navbar-static-top">
+            <div class="navbar-header">
+                <a class="navbar-brand" href="/">
+                    <strong>Favorite Everywhere</strong>
+                </a>
+            </div>
+
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav">
+                    {% spaceless %}
+                        {% set currentPath = path(app.request.attributes.get('_route'), app.request.attributes.get('_route_params')) %}
+                        {% set menu = [['Accueil', '/'], ['Favoris', '/favoris/'], ['Compte', '/account/']] %}
+                        {% set texte = "" %}
+
+                        {% for row in menu %}
+                            {% set texte = row[1] %}
+                            <li {{ (app.request.pathinfo == texte)?'class="active"':'' }} >
+                                <a href="{{ texte }}">
+                                    {% set texte = row[0] %}
+                                    {{ texte }}
+                                </a>
+                            </li>
+                        {% endfor %}
+                    {% endspaceless %}
+                </ul>
+            </div>
+        </nav>
+
+        <div class="container-fluid">
+            <div class="row">
+
+                <div class="col-md-8">
+                    {% block body %}{% endblock %}
+                </div>
+
+                <div class="col-md-1">
+                    {% block test %}{% endblock %}
+                </div>  
+            </div>
+        </div>        
+        
         {% block javascripts %}{% endblock %}
     </body>
 </html>
