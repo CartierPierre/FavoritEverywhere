@@ -31,13 +31,6 @@ class Favoris
     /**
      * @var string
      *
-     * @ORM\Column(name="favicon", type="text")
-     */
-    private $favicon;
-
-    /**
-     * @var string
-     *
      * @ORM\Column(name="nom", type="string", length=127)
      */
     private $nom;
