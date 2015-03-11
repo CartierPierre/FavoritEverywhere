@@ -137,13 +137,21 @@ class appDevUrlMatcher extends Symfony\Bundle\FrameworkBundle\Routing\Redirectab
         }
 
         // fe_favoris_homepage
-        if (0 === strpos($pathinfo, '/favoris/hello') && preg_match('#^/favoris/hello/(?P<name>[^/]++)$#s', $pathinfo, $matches)) {
-            return $this->mergeDefaults(array_replace($matches, array('_route' => 'fe_favoris_homepage')), array (  '_controller' => 'FE\\FavorisBundle\\Controller\\DefaultController::indexAction',));
+        if (rtrim($pathinfo, '/') === '/favoris') {
+            if (substr($pathinfo, -1) !== '/') {
+                return $this->redirect($pathinfo.'/', 'fe_favoris_homepage');
+            }
+
+            return array (  '_controller' => 'FE\\FavorisBundle\\Controller\\DefaultController::indexAction',  '_route' => 'fe_favoris_homepage',);
         }
 
         // fe_account_homepage
-        if (0 === strpos($pathinfo, '/account/hello') && preg_match('#^/account/hello/(?P<name>[^/]++)$#s', $pathinfo, $matches)) {
-            return $this->mergeDefaults(array_replace($matches, array('_route' => 'fe_account_homepage')), array (  '_controller' => 'FE\\AccountBundle\\Controller\\DefaultController::indexAction',));
+        if (rtrim($pathinfo, '/') === '/account') {
+            if (substr($pathinfo, -1) !== '/') {
+                return $this->redirect($pathinfo.'/', 'fe_account_homepage');
+            }
+
+            return array (  '_controller' => 'FE\\AccountBundle\\Controller\\DefaultController::indexAction',  '_route' => 'fe_account_homepage',);
         }
 
         throw 0 < count($allow) ? new MethodNotAllowedException(array_unique($allow)) : new ResourceNotFoundException();
