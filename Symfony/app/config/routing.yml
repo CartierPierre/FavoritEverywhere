@@ -9,3 +9,6 @@ fe_favoris:
 fe_account:
     resource: "@FEAccountBundle/Resources/config/routing.yml"
     prefix:   /account
+
+fos_user:
+    resource: "@FOSUserBundle/Resources/config/routing/all.xml"

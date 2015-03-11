@@ -12,4 +12,4 @@ parameters:
     mailer_password: null
     locale: en
     secret: b4289c0b750d5c5b573788d79c4e1d130380ff7d
-    database_path: %kernel.root_dir%/database.db
+    database_path: '%kernel.root_dir%/database.db'

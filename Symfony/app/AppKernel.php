@@ -19,6 +19,9 @@ class AppKernel extends Kernel
             new FE\AccountBundle\FEAccountBundle(),
             new FE\FavorisBundle\FEFavorisBundle(),
             new FE\GeneralBundle\FEGeneralBundle(),
+
+            new FOS\UserBundle\FOSUserBundle(),
+            new FE\UserBundle\UserBundle(),
         );
 
         if (in_array($this->getEnvironment(), array('dev', 'test'))) {
