@@ -1,3 +1,3 @@
 fe_favoris_homepage:
     path:     /
-    defaults: { _controller: FEFavorisBundle:Default:index }
+    defaults: { _controller: FEFavorisBundle:Default:list }

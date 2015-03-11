@@ -1,5 +1,14 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-	Hello Favoris!
+	<h1>Voici la liste de vos favoris</h1>
+	<ul>
+		{% for favori in favoris %}
+		<li>
+			<img src="http://www.google.com/s2/favicons?domain={{ path('ROUTE') }}" />
+			<a href="{{ path('ROUTE') }}">{{ path('ROUTE') }}</a>
+			- {{ path('ROUTE') }}
+		</li>
+		{% endfor %}
+	</ul>
 {% endblock %}

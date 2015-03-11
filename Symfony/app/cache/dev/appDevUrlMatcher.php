@@ -142,7 +142,7 @@ class appDevUrlMatcher extends Symfony\Bundle\FrameworkBundle\Routing\Redirectab
                 return $this->redirect($pathinfo.'/', 'fe_favoris_homepage');
             }
 
-            return array (  '_controller' => 'FE\\FavorisBundle\\Controller\\DefaultController::indexAction',  '_route' => 'fe_favoris_homepage',);
+            return array (  '_controller' => 'FE\\FavorisBundle\\Controller\\DefaultController::listAction',  '_route' => 'fe_favoris_homepage',);
         }
 
         // fe_account_homepage
