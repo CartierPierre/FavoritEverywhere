@@ -1,0 +1,6 @@
+# src/FE/UserBundle/Resources/config/services.yml
+services:
+    fos_user.registration.form.type:
+        class: FE\UserBundle\Form\Type\RegistrationFormType
+        tags:
+            - { name: form.type, alias: fe_user_registration }
