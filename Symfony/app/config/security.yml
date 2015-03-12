@@ -24,24 +24,33 @@ security:
     # the main part of the security, where you can set up firewalls
     # for specific sections of your app
     firewalls:
-        main:
-            pattern:    ^/
-            # it's important to notice that in this case _demo_security_check and _demo_login
-            # are route names and that they are specified in the AcmeDemoBundle
-            form_login:
-                provider: fos_userbundle
-                csrf_provider: form.csrf_provider
-            logout:       true
-            anonymous:    true
-            #http_basic:
-            #    realm: "Secured Demo Area"
         # main:
-        #     pattern: ^/
+        #     pattern:    ^/
+        #     # it's important to notice that in this case _demo_security_check and _demo_login
+        #     # are route names and that they are specified in the AcmeDemoBundle
         #     form_login:
         #         provider: fos_userbundle
         #         csrf_provider: form.csrf_provider
         #     logout:       true
         #     anonymous:    true
+        #     #http_basic:
+            #    realm: "Secured Demo Area"
+        # … le pare-feu « dev »
+        # Firewall principal pour le reste de notre site
+        main:
+            pattern:        ^/
+            anonymous:      true
+            provider:       main
+            form_login:
+                provider: fos_userbundle
+                csrf_provider: form.csrf_provider
+                login_path: fos_user_security_login
+                check_path: fos_user_security_check
+            logout:
+                path:       fos_user_security_logout
+                target:     /
+            remember_me:
+                key:        %secret% # %secret% est un paramètre de parameters.yml
 
         # # disables authentication for assets and the profiler, adapt it according to your needs
         # dev:

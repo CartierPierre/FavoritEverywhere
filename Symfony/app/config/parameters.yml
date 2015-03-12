@@ -10,6 +10,6 @@ parameters:
     mailer_host: localhost
     mailer_user: null
     mailer_password: null
-    locale: en
+    locale: fr
     secret: b4289c0b750d5c5b573788d79c4e1d130380ff7d
     database_path: '%kernel.root_dir%/database.db'

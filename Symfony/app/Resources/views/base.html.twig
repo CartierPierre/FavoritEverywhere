@@ -1,3 +1,5 @@
+{% trans_default_domain 'FOSUserBundle' %}
+
 <!DOCTYPE html>
 <html>
     <head>
@@ -20,7 +22,7 @@
             </div>
 
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-                <ul class="nav navbar-nav">
+                <ul class="nav navbar-nav navbar-left">
                     {% spaceless %}
                         {% set currentPath = path(app.request.attributes.get('_route'), app.request.attributes.get('_route_params')) %}
                         {% set menu = [['Accueil', '/'], ['Favoris', '/favoris/'], ['Compte', '/account/']] %}
@@ -37,19 +39,44 @@
                         {% endfor %}
                     {% endspaceless %}
                 </ul>
+                <ul class="nav navbar-nav navbar-right">
+                    
+                        {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
+                        <li>
+                            <p class="navbar-text">
+                                {{ 'layout.logged_in_as'|trans({'%username%': app.user.username}) }} - <a href="{{ path('fos_user_security_logout') }}">{{ 'layout.logout'|trans }}</a>
+                            </p>
+                        </li>
+                        {% else %}
+                        <li>
+                            <a href="{{ path('fos_user_security_login') }}">{{ 'layout.login'|trans }}</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('fos_user_registration_register') }}">{{ 'layout.register'|trans }}</a>
+                        </li>
+                        {% endif %}
+                    
+                </ul>
             </div>
         </nav>
 
         <div class="container-fluid">
             <div class="row">
-
-                <div class="col-md-8">
-                    {% block body %}{% endblock %}
+                <div class="col-md-2">
+                    {% block test %}{% endblock %}
                 </div>
 
-                <div class="col-md-1">
-                    {% block test %}{% endblock %}
-                </div>  
+                <div class="col-md-10">
+                    {% block body %}
+                        <div class="jumbotron">
+                            <h1>Désolé</h1>
+                            <p>Cette page est toujours en cours de construction !</p>
+                            <p><a class="btn btn-primary btn-lg" href="/" role="button">Learn more</a></p>
+                        </div>
+                    {% endblock %}
+                </div>
+
+                
             </div>
         </div>        
         

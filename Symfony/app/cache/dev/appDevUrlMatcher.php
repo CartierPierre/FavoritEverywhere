@@ -142,19 +142,19 @@ class appDevUrlMatcher extends Symfony\Bundle\FrameworkBundle\Routing\Redirectab
                 return $this->redirect($pathinfo.'/', 'fe_favoris_homepage');
             }
 
-            return array (  '_controller' => 'FE\\FavorisBundle\\Controller\\DefaultController::listAction',  '_route' => 'fe_favoris_homepage',);
-        }
-
-        // fe_account_homepage
-        if (rtrim($pathinfo, '/') === '/kkkk') {
-            if (substr($pathinfo, -1) !== '/') {
-                return $this->redirect($pathinfo.'/', 'fe_account_homepage');
-            }
-
-            return array (  '_controller' => 'FE\\AccountBundle\\Controller\\DefaultController::indexAction',  '_route' => 'fe_account_homepage',);
+            return array (  '_controller' => 'FE\\FavorisBundle\\Controller\\DefaultController::indexAction',  '_route' => 'fe_favoris_homepage',);
         }
 
         if (0 === strpos($pathinfo, '/account')) {
+            // fe_account_homepage
+            if (rtrim($pathinfo, '/') === '/account') {
+                if (substr($pathinfo, -1) !== '/') {
+                    return $this->redirect($pathinfo.'/', 'fe_account_homepage');
+                }
+
+                return array (  '_controller' => 'FE\\AccountBundle\\Controller\\DefaultController::indexAction',  '_route' => 'fe_account_homepage',);
+            }
+
             if (0 === strpos($pathinfo, '/account/log')) {
                 if (0 === strpos($pathinfo, '/account/login')) {
                     // fos_user_security_login

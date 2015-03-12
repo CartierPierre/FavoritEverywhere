@@ -2,4 +2,4 @@ _assetic:
     resource: .
     type: assetic
 _app:
-    resource: /home/amaury/Documents/L3SPI/Semestre2/Web/FavoritEverywhere/Symfony/app/config/routing_dev.yml
+    resource: /home/amaury/Documents/Web/FavoritEverywhere/Symfony/app/config/routing_dev.yml
