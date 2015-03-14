@@ -12,4 +12,30 @@ use Doctrine\ORM\EntityRepository;
  */
 class FavorisRepository extends EntityRepository
 {
+    public function countFavoris()
+    {
+        return $this->createQueryBuilder('f')->select('f.url, COUNT(f.url) as nb_fav')
+                                             ->where('f.statifiable = true')
+                                             ->groupBy('f.url')
+                                             ->orderBy('nb_fav, f.url')
+                                             ->getQuery()
+                                             ->getResult();
+    }
+
+    public function nbFavoris()
+    {
+        return $this->createQueryBuilder('f')->select('COUNT(f.url) as nbFavoris')
+                                             ->groupBy('f.url')
+                                             ->getQuery()
+                                             ->getResult();
+    }
+
+    public function userFavoris($id)
+    {
+        return $this->createQueryBuilder('f')->where('f.idUser = :id')
+                                             ->setParameter('id', $id)
+                                             ->groupBy('f.url')
+                                             ->getQuery()
+                                             ->getResult();
+    }
 }

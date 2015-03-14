@@ -5,11 +5,23 @@
     <head>
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1">
+
         <title>Favorite Everywhere{% block title %}{% endblock %}</title>
-        {% block stylesheets %}
-            {# On charge le CSS de bootstrap depuis le site directement #}
-            <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
-        {% endblock %}
+
+        <!-- Style Sheets -->
+{#    #}{% block stylesheets %}
+{#    #}{# On charge le CSS de bootstrap depuis le site directement #}
+        <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet">
+        <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap-theme.min.css" rel="stylesheet">
+{#    #}{% stylesheets 'css/custom.css' filter='cssrewrite' %}
+        <link href="{{ asset_url }}" rel="stylesheet"/>
+{#    #}{% endstylesheets %}
+{#    #}{% endblock %}
+
+        <!-- Scripts -->
+        <script src="https://code.jquery.com/jquery.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
+
         <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
     </head>
 
@@ -17,45 +29,45 @@
         <nav class="navbar navbar-inverse navbar-static-top">
             <div class="navbar-header">
                 <a class="navbar-brand" href="/">
-                    <strong>Favorite Everywhere</strong>
+                    <strong class="text-white">Favorite Everywhere</strong>
                 </a>
             </div>
 
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav navbar-left">
-                    {% spaceless %}
-                        {% set currentPath = path(app.request.attributes.get('_route'), app.request.attributes.get('_route_params')) %}
-                        {% set menu = [['Accueil', '/'], ['Favoris', '/favoris/'], ['Compte', '/account/']] %}
-                        {% set texte = "" %}
-
-                        {% for row in menu %}
-                            {% set texte = row[1] %}
-                            <li {{ (app.request.pathinfo == texte)?'class="active"':'' }} >
-                                <a href="{{ texte }}">
-                                    {% set texte = row[0] %}
-                                    {{ texte }}
-                                </a>
-                            </li>
-                        {% endfor %}
-                    {% endspaceless %}
+{#                #}{% set currentPath = path(app.request.attributes.get('_route'), app.request.attributes.get('_route_params')) -%}
+{#                #}{% set menu = [['Accueil', 'home', '/'],
+                                   ['Favoris', 'star', '/favoris/'],
+                                   ['Compte', 'user', '/account/']] %}
+{#
+                  #}{% for row in menu %}
+{#                #}{% set texte = row[2] %}
+                    <li {{ (app.request.pathinfo == texte)?'class="active"':'' }} >
+                        <a href="{{ texte }}">
+{#                    #}{% set glyphicon = row[1] %}
+                            <span class="glyphicon glyphicon-{{ glyphicon }}" aria-hidden="true"></span>
+{#                    #}{% set texte = row[0] %}
+                            <strong class="text-white">  {{ texte }}</strong>
+                        </a>
+                    </li>
+{#                #}{% endfor %}
                 </ul>
+
                 <ul class="nav navbar-nav navbar-right">
-                    
-                        {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
-                        <li>
-                            <p class="navbar-text">
-                                {{ 'layout.logged_in_as'|trans({'%username%': app.user.username}) }} - <a href="{{ path('fos_user_security_logout') }}">{{ 'layout.logout'|trans }}</a>
-                            </p>
-                        </li>
-                        {% else %}
-                        <li>
-                            <a href="{{ path('fos_user_security_login') }}">{{ 'layout.login'|trans }}</a>
-                        </li>
-                        <li>
-                            <a href="{{ path('fos_user_registration_register') }}">{{ 'layout.register'|trans }}</a>
-                        </li>
-                        {% endif %}
-                    
+{#                #}{% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
+                    <li>
+                        <p class="navbar-text">
+                            <span class="text-white">{{ 'layout.logged_in_as'|trans({'%username%': app.user.username}) }} - </span><a href="{{ path('fos_user_security_logout') }}">{{ 'layout.logout'|trans }}</a>
+                        </p>
+                    </li>
+{#                #}{% else %}
+                    <li>
+                        <a href="{{ path('fos_user_security_login') }}">{{ 'layout.login'|trans }}</a>
+                    </li>
+                    <li>
+                        <a href="{{ path('fos_user_registration_register') }}">{{ 'layout.register'|trans }}</a>
+                    </li>
+{#                #}{% endif %}
                 </ul>
             </div>
         </nav>
@@ -63,23 +75,21 @@
         <div class="container-fluid">
             <div class="row">
                 <div class="col-md-2">
-                    {% block test %}{% endblock %}
+{#                #}{% block test %}{% endblock %}
                 </div>
 
                 <div class="col-md-10">
-                    {% block body %}
-                        <div class="jumbotron">
-                            <h1>Désolé</h1>
-                            <p>Cette page est toujours en cours de construction !</p>
-                            <p><a class="btn btn-primary btn-lg" href="/" role="button">Learn more</a></p>
-                        </div>
-                    {% endblock %}
+{#                #}{% block body %}
+                    <div class="jumbotron">
+                        <h1>Désolé</h1>
+                        <p>Cette page est toujours en cours de construction !</p>
+                        <p><a class="btn btn-primary btn-lg" href="/" role="button">Learn more</a></p>
+                    </div>
+{#                #}{% endblock %}
                 </div>
-
-                
             </div>
-        </div>        
-        
+        </div>
+
         {% block javascripts %}{% endblock %}
     </body>
 </html>

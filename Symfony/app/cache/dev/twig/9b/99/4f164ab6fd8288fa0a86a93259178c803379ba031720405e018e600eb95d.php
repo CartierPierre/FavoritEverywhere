@@ -78,7 +78,7 @@ class __TwigTemplate_9b994f164ab6fd8288fa0a86a93259178c803379ba031720405e018e600
         $context = array_intersect_key($context, $_parent) + $_parent;
         // line 16
         echo "
-    ";
+";
         // line 17
         $this->displayBlock("fos_user_content", $context, $blocks);
         echo "

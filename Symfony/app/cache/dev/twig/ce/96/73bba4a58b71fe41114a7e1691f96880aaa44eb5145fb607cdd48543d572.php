@@ -36,17 +36,14 @@ class __TwigTemplate_ce9673bba4a58b71fe41114a7e1691f96880aaa44eb5145fb607cdd4854
     // line 3
     public function block_title($context, array $blocks = array())
     {
-        // line 4
-        echo "    ";
         $this->displayParentBlock("title", $context, $blocks);
-        echo " - Éditer
-";
+        echo " - Éditer";
     }
 
-    // line 7
+    // line 5
     public function block_fos_user_content($context, array $blocks = array())
     {
-        // line 8
+        // line 6
         $this->env->loadTemplate("FOSUserBundle:Profile:edit_content.html.twig")->display($context);
     }
 
@@ -62,6 +59,6 @@ class __TwigTemplate_ce9673bba4a58b71fe41114a7e1691f96880aaa44eb5145fb607cdd4854
 
     public function getDebugInfo()
     {
-        return array (  50 => 8,  47 => 7,  40 => 4,  37 => 3,  11 => 1,);
+        return array (  47 => 6,  44 => 5,  37 => 3,  11 => 1,);
     }
 }

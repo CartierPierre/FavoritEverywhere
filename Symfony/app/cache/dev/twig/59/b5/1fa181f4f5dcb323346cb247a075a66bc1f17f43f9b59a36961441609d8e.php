@@ -9,7 +9,7 @@ class __TwigTemplate_59b51fa181f4f5dcb323346cb247a075a66bc1f17f43f9b59a369614416
 
         // line 1
         try {
-            $this->parent = $this->env->loadTemplate("base.html.twig");
+            $this->parent = $this->env->loadTemplate("FEFavorisBundle::layout.html.twig");
         } catch (Twig_Error_Loader $e) {
             $e->setTemplateFile($this->getTemplateName());
             $e->setTemplateLine(1);
@@ -23,7 +23,7 @@ class __TwigTemplate_59b51fa181f4f5dcb323346cb247a075a66bc1f17f43f9b59a369614416
 
     protected function doGetParent(array $context)
     {
-        return "base.html.twig";
+        return "FEFavorisBundle::layout.html.twig";
     }
 
     protected function doDisplay(array $context, array $blocks = array())

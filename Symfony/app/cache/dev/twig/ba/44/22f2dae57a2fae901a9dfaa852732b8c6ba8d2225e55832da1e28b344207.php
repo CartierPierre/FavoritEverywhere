@@ -36,17 +36,14 @@ class __TwigTemplate_ba4422f2dae57a2fae901a9dfaa852732b8c6ba8d2225e55832da1e28b3
     // line 5
     public function block_title($context, array $blocks = array())
     {
-        // line 6
-        echo "    - ";
+        echo " - ";
         echo twig_escape_filter($this->env, $this->env->getExtension('translator')->trans("layout.register", array(), "FOSUserBundle"), "html", null, true);
-        echo "
-";
     }
 
-    // line 9
+    // line 7
     public function block_fos_user_content($context, array $blocks = array())
     {
-        // line 10
+        // line 8
         $this->env->loadTemplate("FOSUserBundle:Registration:register_content.html.twig")->display($context);
     }
 
@@ -62,6 +59,6 @@ class __TwigTemplate_ba4422f2dae57a2fae901a9dfaa852732b8c6ba8d2225e55832da1e28b3
 
     public function getDebugInfo()
     {
-        return array (  50 => 10,  47 => 9,  40 => 6,  37 => 5,  11 => 1,);
+        return array (  47 => 8,  44 => 7,  37 => 5,  11 => 1,);
     }
 }

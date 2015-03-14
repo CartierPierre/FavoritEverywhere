@@ -3,14 +3,38 @@
 namespace FE\FavorisBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Symfony\Component\Security\Core\Exception\AccessDeniedException;
+use FOS\UserBundle\Model\UserInterface;
 
 class DefaultController extends Controller
 {
     public function indexAction()
     {
-        return $this->render('FEFavorisBundle:Default:index.html.twig');
+        $securityContext = $this->container->get('security.context');
+
+        if ($securityContext->isGranted('IS_AUTHENTICATED_REMEMBERED')) {
+            return $this->showAction();
+        }
+        else
+        {
+            return $this->statAction();
+        }
     }
-    
+
+    public function statAction()
+    {
+        $em = $this->getDoctrine()->getManager();
+        $favorisRepository = $em->getRepository('FEFavorisBundle:Favoris');
+        $listeFavoris = $favorisRepository->countFavoris();
+
+        if( null === $listeFavoris )
+        {
+            throw new NotFoundHttpException("Problème dans la récupération de la liste des favoris");
+        }
+
+        return $this->render('FEFavorisBundle:Stats:index.html.twig', array( 'listeFavoris' => $listeFavoris));
+    }
+
     public function listAction()
     {
         $favoris = $this->get('doctrine')
@@ -21,18 +45,18 @@ class DefaultController extends Controller
         return $this->render('index.html.twig', array('favoris' => $favoris));
     }
 
-    public function showAction($id)
+    public function showAction()
     {
-        $favori = $this->get('doctrine')
-            ->getManager()
-            ->getRepository('FE/FavorisBundle:Default')
-            ->find($id);
-
-        if (!$favori) {
-            // cause the 404 page not found to be displayed
-            throw $this->createNotFoundException();
+        $user = $this->getUser();
+        if (!is_object($user) || !$user instanceof UserInterface) {
+            throw new AccessDeniedException('This user does not have access to this section.');
         }
 
-        return $this->render('index.html.twig', array('favori' => $favori));
+        $listeFavoris = $this->getDoctrine()
+                             ->getManager()
+                             ->getRepository('FEFavorisBundle:Favoris')
+                             ->userFavoris($user->getId());
+
+        return $this->render('FEFavorisBundle:UserFavoris:show.html.twig', array( 'listeFavoris' => $listeFavoris));
     }
 }
