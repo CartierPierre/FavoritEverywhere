@@ -90,29 +90,6 @@ class Favoris
     }
 
     /**
-     * Set favicon
-     *
-     * @param string $favicon
-     * @return Favoris
-     */
-    public function setFavicon($favicon)
-    {
-        $this->favicon = $favicon;
-
-        return $this;
-    }
-
-    /**
-     * Get favicon
-     *
-     * @return string 
-     */
-    public function getFavicon()
-    {
-        return $this->favicon;
-    }
-
-    /**
      * Set nom
      *
      * @param string $nom

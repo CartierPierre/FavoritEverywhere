@@ -2,7 +2,7 @@
 
 {% block favoris_content %}
     {% for favoris in listeFavoris %}
-        <p><span class="text-capitalize"> {{ favoris.url|split('.')[1] }} </span> - {{ favoris.nb_fav }} </p>
+        <p><span class="text-capitalize"> {{ favoris.url }} </span> - {{ favoris.nb_fav }} </p>
     {% endfor %}
 </div>
 {% endblock favoris_content %}

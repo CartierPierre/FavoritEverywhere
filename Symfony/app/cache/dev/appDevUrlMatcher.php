@@ -149,13 +149,49 @@ class appDevUrlMatcher extends Symfony\Bundle\FrameworkBundle\Routing\Redirectab
             return array (  '_controller' => 'FE\\GeneralBundle\\Controller\\AccueilController::indexAction',  '_route' => 'fe_general_accueil',);
         }
 
-        // fe_favoris_homepage
-        if (rtrim($pathinfo, '/') === '/favoris') {
-            if (substr($pathinfo, -1) !== '/') {
-                return $this->redirect($pathinfo.'/', 'fe_favoris_homepage');
+        if (0 === strpos($pathinfo, '/favoris')) {
+            // fe_favoris_homepage
+            if (rtrim($pathinfo, '/') === '/favoris') {
+                if (substr($pathinfo, -1) !== '/') {
+                    return $this->redirect($pathinfo.'/', 'fe_favoris_homepage');
+                }
+
+                return array (  '_controller' => 'FE\\FavorisBundle\\Controller\\DefaultController::indexAction',  '_route' => 'fe_favoris_homepage',);
             }
 
-            return array (  '_controller' => 'FE\\FavorisBundle\\Controller\\DefaultController::indexAction',  '_route' => 'fe_favoris_homepage',);
+            // fe_favoris_ajoute
+            if ($pathinfo === '/favoris/check') {
+                if ($this->context->getMethod() != 'POST') {
+                    $allow[] = 'POST';
+                    goto not_fe_favoris_ajoute;
+                }
+
+                return array (  '_controller' => 'FE\\FavorisBundle\\Controller\\DefaultController::ajoutAction',  '_route' => 'fe_favoris_ajoute',);
+            }
+            not_fe_favoris_ajoute:
+
+            // fe_favoris_modifie
+            if ($pathinfo === '/favoris/edit') {
+                if ($this->context->getMethod() != 'POST') {
+                    $allow[] = 'POST';
+                    goto not_fe_favoris_modifie;
+                }
+
+                return array (  '_controller' => 'FE\\FavorisBundle\\Controller\\DefaultController::modifieAction',  '_route' => 'fe_favoris_modifie',);
+            }
+            not_fe_favoris_modifie:
+
+            // fe_favoris_supprime
+            if ($pathinfo === '/favoris/delete') {
+                if ($this->context->getMethod() != 'POST') {
+                    $allow[] = 'POST';
+                    goto not_fe_favoris_supprime;
+                }
+
+                return array (  '_controller' => 'FE\\FavorisBundle\\Controller\\DefaultController::supprimeAction',  '_route' => 'fe_favoris_supprime',);
+            }
+            not_fe_favoris_supprime:
+
         }
 
         if (0 === strpos($pathinfo, '/account')) {

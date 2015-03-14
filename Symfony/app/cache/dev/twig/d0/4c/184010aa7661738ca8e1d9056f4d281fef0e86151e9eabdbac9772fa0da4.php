@@ -155,18 +155,51 @@ class __TwigTemplate_d04c184010aa7661738ca8e1d9056f4d281fef0e86151e9eabdbac9772f
         echo "                </div>
 
                 <div class=\"col-md-10\">
+                    ";
+        // line 83
+        echo "                    ";
+        $context['_parent'] = (array) $context;
+        $context['_seq'] = twig_ensure_traversable($this->getAttribute($this->getAttribute($this->getAttribute((isset($context["app"]) ? $context["app"] : $this->getContext($context, "app")), "session", array()), "flashbag", array()), "all", array()));
+        foreach ($context['_seq'] as $context["key"] => $context["messages"]) {
+            // line 84
+            echo "                        ";
+            $context['_parent'] = (array) $context;
+            $context['_seq'] = twig_ensure_traversable($context["messages"]);
+            foreach ($context['_seq'] as $context["_key"] => $context["message"]) {
+                // line 85
+                echo "                            <div class=\"alert alert-";
+                echo twig_escape_filter($this->env, $context["key"], "html", null, true);
+                echo "\">
+                                ";
+                // line 86
+                echo twig_escape_filter($this->env, $this->env->getExtension('translator')->trans($context["message"], array(), "FOSUserBundle"), "html", null, true);
+                echo "
+                            </div>
+                        ";
+            }
+            $_parent = $context['_parent'];
+            unset($context['_seq'], $context['_iterated'], $context['_key'], $context['message'], $context['_parent'], $context['loop']);
+            $context = array_intersect_key($context, $_parent) + $_parent;
+            // line 89
+            echo "                    ";
+        }
+        $_parent = $context['_parent'];
+        unset($context['_seq'], $context['_iterated'], $context['key'], $context['messages'], $context['_parent'], $context['loop']);
+        $context = array_intersect_key($context, $_parent) + $_parent;
+        // line 90
+        echo "
 ";
-        // line 82
+        // line 91
         $this->displayBlock('body', $context, $blocks);
-        // line 89
+        // line 98
         echo "                </div>
             </div>
         </div>
 
         ";
-        // line 93
+        // line 102
         $this->displayBlock('javascripts', $context, $blocks);
-        // line 94
+        // line 103
         echo "    </body>
 </html>
 ";
@@ -209,10 +242,10 @@ class __TwigTemplate_d04c184010aa7661738ca8e1d9056f4d281fef0e86151e9eabdbac9772f
     {
     }
 
-    // line 82
+    // line 91
     public function block_body($context, array $blocks = array())
     {
-        // line 83
+        // line 92
         echo "                    <div class=\"jumbotron\">
                         <h1>Désolé</h1>
                         <p>Cette page est toujours en cours de construction !</p>
@@ -221,7 +254,7 @@ class __TwigTemplate_d04c184010aa7661738ca8e1d9056f4d281fef0e86151e9eabdbac9772f
 ";
     }
 
-    // line 93
+    // line 102
     public function block_javascripts($context, array $blocks = array())
     {
     }
@@ -238,6 +271,6 @@ class __TwigTemplate_d04c184010aa7661738ca8e1d9056f4d281fef0e86151e9eabdbac9772f
 
     public function getDebugInfo()
     {
-        return array (  225 => 93,  216 => 83,  213 => 82,  208 => 78,  192 => 17,  188 => 16,  184 => 14,  181 => 12,  176 => 9,  170 => 94,  168 => 93,  162 => 89,  160 => 82,  155 => 79,  153 => 78,  144 => 71,  136 => 68,  128 => 65,  125 => 64,  114 => 60,  110 => 58,  108 => 57,  103 => 54,  92 => 50,  90 => 49,  85 => 48,  83 => 47,  79 => 46,  74 => 45,  72 => 44,  68 => 43,  66 => 39,  64 => 38,  48 => 25,  41 => 20,  39 => 12,  33 => 9,  24 => 2,);
+        return array (  258 => 102,  249 => 92,  246 => 91,  241 => 78,  225 => 17,  221 => 16,  217 => 14,  214 => 12,  209 => 9,  203 => 103,  201 => 102,  195 => 98,  193 => 91,  190 => 90,  184 => 89,  175 => 86,  170 => 85,  165 => 84,  160 => 83,  155 => 79,  153 => 78,  144 => 71,  136 => 68,  128 => 65,  125 => 64,  114 => 60,  110 => 58,  108 => 57,  103 => 54,  92 => 50,  90 => 49,  85 => 48,  83 => 47,  79 => 46,  74 => 45,  72 => 44,  68 => 43,  66 => 39,  64 => 38,  48 => 25,  41 => 20,  39 => 12,  33 => 9,  24 => 2,);
     }
 }

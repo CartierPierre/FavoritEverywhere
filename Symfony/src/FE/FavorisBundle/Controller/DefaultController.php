@@ -4,7 +4,9 @@ namespace FE\FavorisBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\Security\Core\Exception\AccessDeniedException;
+use Symfony\Component\HttpFoundation\Request;
 use FOS\UserBundle\Model\UserInterface;
+use FE\FavorisBundle\Entity\Favoris;
 
 class DefaultController extends Controller
 {
@@ -35,16 +37,6 @@ class DefaultController extends Controller
         return $this->render('FEFavorisBundle:Stats:index.html.twig', array( 'listeFavoris' => $listeFavoris));
     }
 
-    public function listAction()
-    {
-        $favoris = $this->get('doctrine')
-            ->getManager()
-            ->createQuery('SELECT p FROM FE/FavorisBundle:Default p')
-            ->execute();
-
-        return $this->render('index.html.twig', array('favoris' => $favoris));
-    }
-
     public function showAction()
     {
         $user = $this->getUser();
@@ -58,5 +50,89 @@ class DefaultController extends Controller
                              ->userFavoris($user->getId());
 
         return $this->render('FEFavorisBundle:UserFavoris:show.html.twig', array( 'listeFavoris' => $listeFavoris));
+    }
+
+    public function ajoutAction(Request $request)
+    {
+        if ($request->isMethod('POST'))
+        {
+            $favoris = new Favoris();
+            $data = $request->request->all();
+            $favoris->setUrl($data['_url']);
+            $favoris->setNom($data['_nom']);
+            $favoris->setDescription($data['_description']);
+            if(array_key_exists( '_statifiable' , $data ))
+                $favoris->setStatifiable(true);
+            else
+                $favoris->setStatifiable(false);
+            $favoris->setIdUser($this->getUser()->getId());
+
+            $em = $this->getDoctrine()->getManager();
+            $em->persist($favoris);
+            $em->flush();
+
+            $request->getSession()->getFlashBag()->add('success', 'Nouveau favoris ajouté.');
+        }
+        else
+        {
+            $request->getSession()->getFlashBag()->add('danger', 'Impossible d\'ajouté le favoris.');
+        }
+
+        return $this->redirect($this->generateUrl('fe_favoris_homepage'));
+    }
+
+    public function modifieAction(Request $request)
+    {
+        if ($request->isMethod('POST'))
+        {
+            $data = $request->request->all();
+
+            //Récupère le favoris à modifier
+            $em = $this->getDoctrine()->getManager();
+            $favoris = $em->getRepository('FEFavorisBundle:Favoris')->find($data['_id']);
+
+            //Met à jour les données
+            $favoris->setUrl($data['_url']);
+            $favoris->setNom($data['_nom']);
+            $favoris->setDescription($data['_description']);
+            if(array_key_exists( '_statifiable' , $data ))
+                $favoris->setStatifiable(true);
+            else
+                $favoris->setStatifiable(false);
+
+            $em->flush();
+
+            $request->getSession()->getFlashBag()->add('success', 'Le favoris à été mis à jour.');
+        }
+        else
+        {
+            $request->getSession()->getFlashBag()->add('danger', 'Impossible de mettre à jour le favoris.');
+        }
+
+        return $this->redirect($this->generateUrl('fe_favoris_homepage'));
+    }
+
+    public function supprimeAction(Request $request)
+    {
+        if ($request->isMethod('POST'))
+        {
+            $data = $request->request->all();
+
+            //Récupère le favoris à modifier
+            $em = $this->getDoctrine()->getManager();
+            $favoris = $em->getRepository('FEFavorisBundle:Favoris')->find($data['_id']);
+
+            //Supprime le favoris
+            $em->remove($favoris);
+            $em->flush();
+
+            $request->getSession()->getFlashBag()->add('success', 'Le favoris à été supprimé.');
+        }
+        else
+        {
+            $request->getSession()->getFlashBag()->add('danger', 'Impossible de supprimer le favoris.');
+        }
+
+        return $this->redirect($this->generateUrl('fe_favoris_homepage'));
     }
 }

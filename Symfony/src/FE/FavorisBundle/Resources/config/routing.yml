@@ -1,3 +1,21 @@
 fe_favoris_homepage:
     path:     /
     defaults: { _controller: FEFavorisBundle:Default:index }
+
+fe_favoris_ajoute:
+    path:     /check
+    defaults: { _controller: FEFavorisBundle:Default:ajout }
+    requirements:
+        _method:  POST
+
+fe_favoris_modifie:
+    path:     /edit
+    defaults: { _controller: FEFavorisBundle:Default:modifie }
+    requirements:
+        _method:  POST
+
+fe_favoris_supprime:
+    path:     /delete
+    defaults: { _controller: FEFavorisBundle:Default:supprime }
+    requirements:
+        _method:  POST

@@ -45,41 +45,6 @@ class __TwigTemplate_9b994f164ab6fd8288fa0a86a93259178c803379ba031720405e018e600
     public function block_body($context, array $blocks = array())
     {
         // line 8
-        echo "    ";
-        // line 9
-        echo "    ";
-        $context['_parent'] = (array) $context;
-        $context['_seq'] = twig_ensure_traversable($this->getAttribute($this->getAttribute($this->getAttribute((isset($context["app"]) ? $context["app"] : $this->getContext($context, "app")), "session", array()), "flashbag", array()), "all", array()));
-        foreach ($context['_seq'] as $context["key"] => $context["messages"]) {
-            // line 10
-            echo "        ";
-            $context['_parent'] = (array) $context;
-            $context['_seq'] = twig_ensure_traversable($context["messages"]);
-            foreach ($context['_seq'] as $context["_key"] => $context["message"]) {
-                // line 11
-                echo "            <div class=\"alert alert-";
-                echo twig_escape_filter($this->env, $context["key"], "html", null, true);
-                echo "\">
-                ";
-                // line 12
-                echo twig_escape_filter($this->env, $this->env->getExtension('translator')->trans($context["message"], array(), "FOSUserBundle"), "html", null, true);
-                echo "
-            </div>
-        ";
-            }
-            $_parent = $context['_parent'];
-            unset($context['_seq'], $context['_iterated'], $context['_key'], $context['message'], $context['_parent'], $context['loop']);
-            $context = array_intersect_key($context, $_parent) + $_parent;
-            // line 15
-            echo "    ";
-        }
-        $_parent = $context['_parent'];
-        unset($context['_seq'], $context['_iterated'], $context['key'], $context['messages'], $context['_parent'], $context['loop']);
-        $context = array_intersect_key($context, $_parent) + $_parent;
-        // line 16
-        echo "
-";
-        // line 17
         $this->displayBlock("fos_user_content", $context, $blocks);
         echo "
 ";
@@ -97,6 +62,6 @@ class __TwigTemplate_9b994f164ab6fd8288fa0a86a93259178c803379ba031720405e018e600
 
     public function getDebugInfo()
     {
-        return array (  83 => 17,  80 => 16,  74 => 15,  65 => 12,  60 => 11,  55 => 10,  50 => 9,  48 => 8,  45 => 7,  40 => 4,  37 => 3,  11 => 1,);
+        return array (  48 => 8,  45 => 7,  40 => 4,  37 => 3,  11 => 1,);
     }
 }

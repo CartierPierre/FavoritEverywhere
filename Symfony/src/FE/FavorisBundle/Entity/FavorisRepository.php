@@ -17,7 +17,8 @@ class FavorisRepository extends EntityRepository
         return $this->createQueryBuilder('f')->select('f.url, COUNT(f.url) as nb_fav')
                                              ->where('f.statifiable = true')
                                              ->groupBy('f.url')
-                                             ->orderBy('nb_fav, f.url')
+                                             ->addOrderBy('nb_fav', 'DESC')
+                                             ->addOrderBy('f.url', 'ASC')
                                              ->getQuery()
                                              ->getResult();
     }

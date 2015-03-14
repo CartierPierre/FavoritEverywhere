@@ -42,7 +42,7 @@ class __TwigTemplate_872ac8d23a0d091911fb2b3af0981524c247714dff611075a88eacc1ead
         foreach ($context['_seq'] as $context["_key"] => $context["favoris"]) {
             // line 5
             echo "        <p><span class=\"text-capitalize\"> ";
-            echo twig_escape_filter($this->env, $this->getAttribute(twig_split_filter($this->env, $this->getAttribute($context["favoris"], "url", array()), "."), 1, array(), "array"), "html", null, true);
+            echo twig_escape_filter($this->env, $this->getAttribute($context["favoris"], "url", array()), "html", null, true);
             echo " </span> - ";
             echo twig_escape_filter($this->env, $this->getAttribute($context["favoris"], "nb_fav", array()), "html", null, true);
             echo " </p>
