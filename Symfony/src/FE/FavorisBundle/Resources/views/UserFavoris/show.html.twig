@@ -7,125 +7,33 @@
                 <th></th>
                 <th> URL </th>
                 <th> Nom </th>
-                <th> Description </th>
+                <th> Info </th>
+                <th> Modifier </th>
+                <th> Supprimer </th>
             </tr>
         </thead>
     {% for favoris in listeFavoris %}
         <tbody>
-            <tr {{ (favoris.statifiable == false)? 'class="warning"':'' }}>
-                <td><img class="media-object" src="http://www.google.com/s2/favicons?domain={{ favoris.url }}" alt="..."></td>
+            <tr class="{{ (favoris.statifiable == false)? 'warning':'' }} test">
+                <td><img class="media-object" src="http://www.google.com/s2/favicons?domain={{ favoris.url }}" alt="Favicon du site {{ favoris.url }}"></td>
                 <td> <a href="{{ favoris.url }}">{{ favoris.url }}</a></td>
                 <td> {{ favoris.nom }} </td>
-                <td> {{ favoris.description }} </td>
                 <td>
-                    <button type="button" class="btn btn-info btn-xs" data-toggle="modal" data-target="#{{ favoris.id }}Modal">
-                        <span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>
-                    </button>
-
-                    <!-- Modal -->
-                    <div class="modal fade" id="{{ favoris.id }}Modal" tabindex="-1" role="dialog" aria-labelledby="modifModalLabel" aria-hidden="true" data-backdrop="false">
-                        <div class="modal-dialog">
-                            <div class="modal-content">
-                                <div class="modal-header">
-                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                                    <h4 class="modal-title" id="ajoutModalLabel">Modification :</h4>
-                                </div>
-
-                                <form action="{{ path("fe_favoris_modifie") }}"  method="post">
-                                    <div class="modal-body">
-                                        <div class="form-group">
-                                            <label for="nom">Nom :</label>
-                                            <input class="form-control" type="text" id="nom" name="_nom" required="required" maxlength="255" value="{{ favoris.nom }}"/>
-                                        </div>
-
-                                        <div class="form-group">
-                                            <label for="url">URL :</label>
-                                            <input class="form-control" type="url" class="form-control" id="url" name="_url" required="required" maxlength="255" value="{{ favoris.url }}"/>
-                                        </div>
-
-                                        <div class="form-group">
-                                            <label for="description">Description :</label>
-                                            <textarea class="form-control" id="description" name="_description" maxlength="2048" rows="4" />{{ favoris.description }}</textarea>
-                                        </div>
-
-                                        <div class="form-group">
-                                            <input type="checkbox" id="statifiable" name="_statifiable" value="true" {{ (favoris.statifiable == 1)?'checked="true"':'' }}/>
-                                            <label for="statifiable">Permettre l'utilisation de ce favoris pour les statistiques</label>
-                                        </div>
-                                        <input type="hidden" name="_id" value="{{ favoris.id }}" />
-                                    </div>
-
-                                    <div class="modal-footer">
-                                        <div class="form-group">
-                                            <button type="button" class="btn btn-default" data-dismiss="modal">Fermer</button>
-                                            <input type="submit" class="btn btn-primary" id="_submit" name="_submit" value="Modifier" />
-                                        </div>
-                                    </div>
-                                </form>
-                            </div>
-                        </div>
-                    </div>
+                    {% include "FEFavorisBundle:UserFavoris:info_content.html.twig" %}
                 </td>
                 <td>
-                    <form action="{{ path("fe_favoris_supprime") }}" id"del_form" method="post">
-                        <input type="hidden" name="_id" value="{{ favoris.id }}" />
-                        <a class="btn btn-danger btn-xs" role="button" onclick='this.parentNode.submit(); return false;'>
-                            <span class="glyphicon glyphicon-trash" aria-hidden="true"></span>
-                        </a>
-                    </form>
+                    {% include "FEFavorisBundle:UserFavoris:modifie_content.html.twig" %}
+                </td>
+                <td>
+                    {% include "FEFavorisBundle:UserFavoris:supprime_content.html.twig" %}
                 </td>
             </tr>
-        <tbody>
+        </tbody>
     {% endfor %}
     </table>
 
-    <!-- Button trigger modal -->
-    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#ajoutModal">
-      Ajouter un favoris
-    </button>
+    {% include "FEFavorisBundle:UserFavoris:ajout_content.html.twig" %}
 
-    <!-- Modal -->
-    <div class="modal fade" id="ajoutModal" tabindex="-1" role="dialog" aria-labelledby="ajoutModalLabel" aria-hidden="true" data-backdrop="false">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                    <h4 class="modal-title" id="ajoutModalLabel">Ajouter un favoris :</h4>
-                </div>
-
-                <form action="{{ path("fe_favoris_ajoute") }}"  method="post">
-                    <div class="modal-body">
-                        <div class="form-group">
-                            <label for="nom">Nom :</label>
-                            <input class="form-control" type="text" id="nom" name="_nom" required="required" maxlength="255" placeholder="Exemple"/>
-                        </div>
-
-                        <div class="form-group">
-                            <label for="url">URL :</label>
-                            <input class="form-control" type="url" class="form-control" id="url" name="_url" required="required" maxlength="255" placeholder="http://exemple.com"/>
-                        </div>
-
-                        <div class="form-group">
-                            <label for="description">Description :</label>
-                            <textarea class="form-control" id="description" name="_description" maxlength="2048" rows="4" placeholder="Ajouter une description pour décrire le favoris..." defaultValue=""/></textarea>
-                        </div>
-
-                        <div class="form-group">
-                            <input type="checkbox" id="statifiable" name="_statifiable" value="true" checked="true" />
-                            <label for="statifiable">Permettre l'utilisation de ce favoris pour les statistiques</label>
-                        </div>
-                    </div>
-
-                    <div class="modal-footer">
-                        <div class="form-group">
-                            <button type="button" class="btn btn-default" data-dismiss="modal">Fermer</button>
-                            <input type="submit" class="btn btn-primary" id="_submit" name="_submit" value="Ajouter" />
-                        </div>
-                    </div>
-                </form>
-            </div>
-        </div>
-    </div>
 {% endblock favoris_content %}
 
 {% block javascripts %}

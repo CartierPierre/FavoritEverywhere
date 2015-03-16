@@ -1,0 +1,6 @@
+<form action="{{ path("fe_favoris_supprime") }}" id"del_form" method="post">
+    <input type="hidden" name="_id" value="{{ favoris.id }}" />
+    <a class="btn btn-danger btn-xs" role="button" onclick='this.parentNode.submit(); return false;'>
+        <span class="glyphicon glyphicon-trash" aria-hidden="true"></span>
+    </a>
+</form>

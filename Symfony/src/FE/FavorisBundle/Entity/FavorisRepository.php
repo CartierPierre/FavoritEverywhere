@@ -25,7 +25,7 @@ class FavorisRepository extends EntityRepository
 
     public function nbFavoris()
     {
-        return $this->createQueryBuilder('f')->select('COUNT(f.url) as nbFavoris')
+        return $this->createQueryBuilder('f')->select('COUNT(f.url) AS nbFavoris')
                                              ->groupBy('f.url')
                                              ->getQuery()
                                              ->getResult();
@@ -36,6 +36,16 @@ class FavorisRepository extends EntityRepository
         return $this->createQueryBuilder('f')->where('f.idUser = :id')
                                              ->setParameter('id', $id)
                                              ->groupBy('f.url')
+                                             ->getQuery()
+                                             ->getResult();
+    }
+
+    public function urlExist($id, $url)
+    {
+        return $this->createQueryBuilder('f')->where('f.idUser = :id')
+                                             ->andWhere('f.url = :url')
+                                             ->setParameter('id', $id)
+                                             ->setParameter('url', $url)
                                              ->getQuery()
                                              ->getResult();
     }

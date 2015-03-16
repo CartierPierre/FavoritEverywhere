@@ -25,3 +25,11 @@
 textarea {
     resize:none;
 }
+
+.description {
+    word-break: break-word;
+    word-wrap: break-word;
+    display: block;
+    overflow: auto;
+    max-height: 250px;
+}

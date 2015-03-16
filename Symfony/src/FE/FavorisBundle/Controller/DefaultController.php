@@ -58,20 +58,31 @@ class DefaultController extends Controller
         {
             $favoris = new Favoris();
             $data = $request->request->all();
-            $favoris->setUrl($data['_url']);
-            $favoris->setNom($data['_nom']);
-            $favoris->setDescription($data['_description']);
-            if(array_key_exists( '_statifiable' , $data ))
-                $favoris->setStatifiable(true);
-            else
-                $favoris->setStatifiable(false);
-            $favoris->setIdUser($this->getUser()->getId());
 
             $em = $this->getDoctrine()->getManager();
-            $em->persist($favoris);
-            $em->flush();
+            $listeFavoris = $em->getRepository('FEFavorisBundle:Favoris')
+                               ->urlExist($this->getUser()->getId(), $data['_url']);
 
-            $request->getSession()->getFlashBag()->add('success', 'Nouveau favoris ajouté.');
+            if(count($listeFavoris) == 0)
+            {
+                $favoris->setUrl($data['_url']);
+                $favoris->setNom($data['_nom']);
+                $favoris->setDescription($data['_description']);
+                if(array_key_exists( '_statifiable' , $data ))
+                    $favoris->setStatifiable(true);
+                else
+                    $favoris->setStatifiable(false);
+                $favoris->setIdUser($this->getUser()->getId());
+
+                $em->persist($favoris);
+                $em->flush();
+
+                $request->getSession()->getFlashBag()->add('success', 'Nouveau favoris ajouté.');
+            }
+            else
+            {
+                $request->getSession()->getFlashBag()->add('info', 'Vous avez déjà cette adresse en favoris.');
+            }
         }
         else
         {
@@ -92,7 +103,6 @@ class DefaultController extends Controller
             $favoris = $em->getRepository('FEFavorisBundle:Favoris')->find($data['_id']);
 
             //Met à jour les données
-            $favoris->setUrl($data['_url']);
             $favoris->setNom($data['_nom']);
             $favoris->setDescription($data['_description']);
             if(array_key_exists( '_statifiable' , $data ))
