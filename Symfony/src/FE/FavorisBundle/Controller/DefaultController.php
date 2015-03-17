@@ -19,7 +19,7 @@ class DefaultController extends Controller
         }
         else
         {
-            return $this->statAction();
+            return $this->redirect($this->generateUrl('fos_user_security_login'));
         }
     }
 

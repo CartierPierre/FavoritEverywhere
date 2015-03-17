@@ -41,11 +41,11 @@ class __TwigTemplate_872ac8d23a0d091911fb2b3af0981524c247714dff611075a88eacc1ead
         $context['_seq'] = twig_ensure_traversable((isset($context["listeFavoris"]) ? $context["listeFavoris"] : $this->getContext($context, "listeFavoris")));
         foreach ($context['_seq'] as $context["_key"] => $context["favoris"]) {
             // line 5
-            echo "        <p><span class=\"text-capitalize\"> ";
+            echo "        <div class=\"limit\"><span class=\"text-capitalize\"> ";
             echo twig_escape_filter($this->env, $this->getAttribute($context["favoris"], "url", array()), "html", null, true);
             echo " </span> - ";
             echo twig_escape_filter($this->env, $this->getAttribute($context["favoris"], "nb_fav", array()), "html", null, true);
-            echo " </p>
+            echo " </div>
     ";
         }
         $_parent = $context['_parent'];

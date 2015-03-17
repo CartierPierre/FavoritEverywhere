@@ -1,0 +1,52 @@
+.text-yellow {
+    color: #FFFF30;
+}
+
+.text-red {
+    color: #FF0000;
+}
+
+.text-blue {
+    color: #0000FF;
+}
+
+.text-green {
+    color: #00FF00;
+}
+
+.text-black {
+    color: #000000;
+}
+
+.text-white {
+    color: #FFFFFF;
+}
+
+textarea {
+    resize:none;
+}
+
+.limit {
+    word-break: break-word;
+    word-wrap: break-word;
+    display: block;
+}
+
+.description {
+    word-break: break-word;
+    word-wrap: break-word;
+    display: block;
+    overflow: auto;
+    max-height: 250px;
+}
+
+footer {
+    width: 100%;
+    position: absolute;
+    bottom: 0px;
+    left: 0px;
+}
+
+body {
+    background: #888;
+}

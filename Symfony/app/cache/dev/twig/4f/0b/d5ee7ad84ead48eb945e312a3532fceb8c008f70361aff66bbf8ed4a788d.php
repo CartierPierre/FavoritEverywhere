@@ -31,27 +31,29 @@ class __TwigTemplate_4f0bd5ee7ad84ead48eb945e312a3532fceb8c008f70361aff66bbf8ed4
         <div class=\"modal-content\">
             <div class=\"modal-header\">
                 <button type=\"button\" class=\"close\" data-dismiss=\"modal\" aria-label=\"Close\"><span aria-hidden=\"true\">&times;</span></button>
-                <h4 class=\"modal-title\" id=\"infoModalLabel\"> ";
+                <h4 class=\"modal-title\" id=\"infoModalLabel\"> <div class=\"limit\">";
         // line 11
         echo twig_escape_filter($this->env, $this->getAttribute((isset($context["favoris"]) ? $context["favoris"] : $this->getContext($context, "favoris")), "nom", array()), "html", null, true);
-        echo " :</h4>
+        echo "</div> :</h4>
             </div>
 
             <div class=\"modal-body\">
                 <table class=\"table\">
                     <tr>
                         <td>Nom : </td>
-                        <td>";
+                        <td><div class=\"limit\">";
         // line 18
         echo twig_escape_filter($this->env, $this->getAttribute((isset($context["favoris"]) ? $context["favoris"] : $this->getContext($context, "favoris")), "nom", array()), "html", null, true);
-        echo "</td>
+        echo "</div></td>
                     </tr>
                     <tr>
                         <td>URL : </td>
-                        <td>";
+                        <td><div class=\"limit\"><a href=\"";
         // line 22
         echo twig_escape_filter($this->env, $this->getAttribute((isset($context["favoris"]) ? $context["favoris"] : $this->getContext($context, "favoris")), "url", array()), "html", null, true);
-        echo "</td>
+        echo "\" target=\"_blank\">";
+        echo twig_escape_filter($this->env, $this->getAttribute((isset($context["favoris"]) ? $context["favoris"] : $this->getContext($context, "favoris")), "url", array()), "html", null, true);
+        echo "</a></div></td>
                     </tr>
                     <tr>
                         <td>Description</td>
@@ -85,6 +87,6 @@ class __TwigTemplate_4f0bd5ee7ad84ead48eb945e312a3532fceb8c008f70361aff66bbf8ed4
 
     public function getDebugInfo()
     {
-        return array (  60 => 26,  53 => 22,  46 => 18,  36 => 11,  28 => 6,  19 => 1,);
+        return array (  62 => 26,  53 => 22,  46 => 18,  36 => 11,  28 => 6,  19 => 1,);
     }
 }

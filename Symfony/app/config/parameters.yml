@@ -1,15 +1,20 @@
 # This file is auto-generated during the composer install
 parameters:
+    #Databse
     database_driver: pdo_sqlite
     database_host: localhost
     database_port: null
     database_name: ak.db
     database_user: root
     database_password: null
+    database_path: '%kernel.root_dir%/database.db'
+
+    #Mail
     mailer_transport: smtp
-    mailer_host: localhost
+    mailer_host: smtp.msn.com
     mailer_user: null
     mailer_password: null
+
     locale: fr
     secret: b4289c0b750d5c5b573788d79c4e1d130380ff7d
-    database_path: '%kernel.root_dir%/database.db'
+

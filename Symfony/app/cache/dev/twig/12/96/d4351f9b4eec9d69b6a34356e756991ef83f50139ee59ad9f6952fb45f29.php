@@ -42,7 +42,7 @@ class __TwigTemplate_1296d4351f9b4eec9d69b6a34356e756991ef83f50139ee59ad9f6952fb
         // line 8
         $this->env->loadTemplate("FOSUserBundle:Profile:show_content.html.twig")->display($context);
         // line 9
-        echo "        <p><a class=\"btn btn-primary btn-lg\" href=\"edit\" role=\"button\">";
+        echo "        <p><a class=\"btn btn-primary\" href=\"edit\" role=\"button\">";
         echo twig_escape_filter($this->env, $this->env->getExtension('translator')->trans("profile.edit.submit", array(), "FOSUserBundle"), "html", null, true);
         echo "</a></p>
     </div>

@@ -35,10 +35,10 @@ class __TwigTemplate_9503f85963674a1c8565256af46b7f703f4c753cfa031352ca5f4b845fb
         // line 8
         echo $this->env->getExtension('form')->renderer->searchAndRenderBlock($this->getAttribute((isset($context["form"]) ? $context["form"] : $this->getContext($context, "form")), "username", array()), 'label', (twig_test_empty($_label_ = $this->env->getExtension('translator')->trans("form.username", array(), "FOSUserBundle")) ? array() : array("label" => $_label_)));
         echo "
-            ";
+            <strong class=\"text-red\">";
         // line 9
         echo $this->env->getExtension('form')->renderer->searchAndRenderBlock($this->getAttribute((isset($context["form"]) ? $context["form"] : $this->getContext($context, "form")), "username", array()), 'errors');
-        echo "
+        echo "</strong>
             ";
         // line 10
         echo $this->env->getExtension('form')->renderer->searchAndRenderBlock($this->getAttribute((isset($context["form"]) ? $context["form"] : $this->getContext($context, "form")), "username", array()), 'widget', array("attr" => array("class" => "form-control")));
@@ -50,10 +50,10 @@ class __TwigTemplate_9503f85963674a1c8565256af46b7f703f4c753cfa031352ca5f4b845fb
         // line 14
         echo $this->env->getExtension('form')->renderer->searchAndRenderBlock($this->getAttribute((isset($context["form"]) ? $context["form"] : $this->getContext($context, "form")), "email", array()), 'label', (twig_test_empty($_label_ = $this->env->getExtension('translator')->trans("form.email", array(), "FOSUserBundle")) ? array() : array("label" => $_label_)));
         echo "
-            ";
+            <strong class=\"text-red\">";
         // line 15
         echo $this->env->getExtension('form')->renderer->searchAndRenderBlock($this->getAttribute((isset($context["form"]) ? $context["form"] : $this->getContext($context, "form")), "email", array()), 'errors');
-        echo "
+        echo "</strong>
             ";
         // line 16
         echo $this->env->getExtension('form')->renderer->searchAndRenderBlock($this->getAttribute((isset($context["form"]) ? $context["form"] : $this->getContext($context, "form")), "email", array()), 'widget', array("attr" => array("class" => "form-control")));
@@ -65,10 +65,10 @@ class __TwigTemplate_9503f85963674a1c8565256af46b7f703f4c753cfa031352ca5f4b845fb
         // line 20
         echo $this->env->getExtension('form')->renderer->searchAndRenderBlock($this->getAttribute($this->getAttribute((isset($context["form"]) ? $context["form"] : $this->getContext($context, "form")), "plainPassword", array()), "first", array()), 'label', (twig_test_empty($_label_ = $this->env->getExtension('translator')->trans("form.password", array(), "FOSUserBundle")) ? array() : array("label" => $_label_)));
         echo "
-            ";
+            <strong class=\"text-red\">";
         // line 21
         echo $this->env->getExtension('form')->renderer->searchAndRenderBlock($this->getAttribute($this->getAttribute((isset($context["form"]) ? $context["form"] : $this->getContext($context, "form")), "plainPassword", array()), "first", array()), 'errors');
-        echo "
+        echo "</strong>
             ";
         // line 22
         echo $this->env->getExtension('form')->renderer->searchAndRenderBlock($this->getAttribute($this->getAttribute((isset($context["form"]) ? $context["form"] : $this->getContext($context, "form")), "plainPassword", array()), "first", array()), 'widget', array("attr" => array("class" => "form-control")));
@@ -80,10 +80,10 @@ class __TwigTemplate_9503f85963674a1c8565256af46b7f703f4c753cfa031352ca5f4b845fb
         // line 26
         echo $this->env->getExtension('form')->renderer->searchAndRenderBlock($this->getAttribute($this->getAttribute((isset($context["form"]) ? $context["form"] : $this->getContext($context, "form")), "plainPassword", array()), "second", array()), 'label', (twig_test_empty($_label_ = $this->env->getExtension('translator')->trans("form.password_confirmation", array(), "FOSUserBundle")) ? array() : array("label" => $_label_)));
         echo "
-            ";
+            <strong class=\"text-red\">";
         // line 27
         echo $this->env->getExtension('form')->renderer->searchAndRenderBlock($this->getAttribute($this->getAttribute((isset($context["form"]) ? $context["form"] : $this->getContext($context, "form")), "plainPassword", array()), "second", array()), 'errors');
-        echo "
+        echo "</strong>
             ";
         // line 28
         echo $this->env->getExtension('form')->renderer->searchAndRenderBlock($this->getAttribute($this->getAttribute((isset($context["form"]) ? $context["form"] : $this->getContext($context, "form")), "plainPassword", array()), "second", array()), 'widget', array("attr" => array("class" => "form-control")));

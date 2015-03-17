@@ -16,8 +16,8 @@
         <tbody>
             <tr class="{{ (favoris.statifiable == false)? 'warning':'' }} test">
                 <td><img class="media-object" src="http://www.google.com/s2/favicons?domain={{ favoris.url }}" alt="Favicon du site {{ favoris.url }}"></td>
-                <td> <a href="{{ favoris.url }}">{{ favoris.url }}</a></td>
-                <td> {{ favoris.nom }} </td>
+                <td> <div class="limit"><a href="{{ favoris.url }}" target="_blank">{{ favoris.url }}</a></div></td>
+                <td> <div class="limit">{{ favoris.nom }}</div> </td>
                 <td>
                     {% include "FEFavorisBundle:UserFavoris:info_content.html.twig" %}
                 </td>
@@ -35,8 +35,3 @@
     {% include "FEFavorisBundle:UserFavoris:ajout_content.html.twig" %}
 
 {% endblock favoris_content %}
-
-{% block javascripts %}
-    <script type="text/javascript">
-    </script>
-{% endblock %}

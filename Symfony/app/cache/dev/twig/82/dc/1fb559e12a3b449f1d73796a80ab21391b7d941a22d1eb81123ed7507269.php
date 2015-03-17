@@ -19,7 +19,6 @@ class __TwigTemplate_82dc1fb559e12a3b449f1d73796a80ab21391b7d941a22d1eb81123ed75
 
         $this->blocks = array(
             'favoris_content' => array($this, 'block_favoris_content'),
-            'javascripts' => array($this, 'block_javascripts'),
         );
     }
 
@@ -78,16 +77,16 @@ class __TwigTemplate_82dc1fb559e12a3b449f1d73796a80ab21391b7d941a22d1eb81123ed75
             echo "\" alt=\"Favicon du site ";
             echo twig_escape_filter($this->env, $this->getAttribute($context["favoris"], "url", array()), "html", null, true);
             echo "\"></td>
-                <td> <a href=\"";
+                <td> <div class=\"limit\"><a href=\"";
             // line 19
             echo twig_escape_filter($this->env, $this->getAttribute($context["favoris"], "url", array()), "html", null, true);
-            echo "\">";
+            echo "\" target=\"_blank\">";
             echo twig_escape_filter($this->env, $this->getAttribute($context["favoris"], "url", array()), "html", null, true);
-            echo "</a></td>
-                <td> ";
+            echo "</a></div></td>
+                <td> <div class=\"limit\">";
             // line 20
             echo twig_escape_filter($this->env, $this->getAttribute($context["favoris"], "nom", array()), "html", null, true);
-            echo " </td>
+            echo "</div> </td>
                 <td>
                     ";
             // line 22
@@ -132,15 +131,6 @@ class __TwigTemplate_82dc1fb559e12a3b449f1d73796a80ab21391b7d941a22d1eb81123ed75
 ";
     }
 
-    // line 39
-    public function block_javascripts($context, array $blocks = array())
-    {
-        // line 40
-        echo "    <script type=\"text/javascript\">
-    </script>
-";
-    }
-
     public function getTemplateName()
     {
         return "FEFavorisBundle:UserFavoris:show.html.twig";
@@ -153,6 +143,6 @@ class __TwigTemplate_82dc1fb559e12a3b449f1d73796a80ab21391b7d941a22d1eb81123ed75
 
     public function getDebugInfo()
     {
-        return array (  139 => 40,  136 => 39,  131 => 36,  129 => 35,  125 => 33,  108 => 29,  106 => 28,  102 => 26,  100 => 25,  96 => 23,  94 => 22,  89 => 20,  83 => 19,  77 => 18,  73 => 17,  70 => 16,  53 => 15,  40 => 4,  37 => 3,  11 => 1,);
+        return array (  130 => 36,  128 => 35,  124 => 33,  107 => 29,  105 => 28,  101 => 26,  99 => 25,  95 => 23,  93 => 22,  88 => 20,  82 => 19,  76 => 18,  72 => 17,  69 => 16,  52 => 15,  39 => 4,  36 => 3,  11 => 1,);
     }
 }
