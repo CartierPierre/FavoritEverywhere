@@ -14,7 +14,7 @@
         </thead>
     {% for favoris in listeFavoris %}
         <tbody>
-            <tr class="{{ (favoris.statifiable == false)? 'warning':'' }} test">
+            <tr {# class="{{ (favoris.statifiable == false)? 'warning':'' }}" #}>
                 <td><img class="media-object" src="http://www.google.com/s2/favicons?domain={{ favoris.url }}" alt="Favicon du site {{ favoris.url }}"></td>
                 <td> <div class="limit"><a href="{{ favoris.url }}" target="_blank">{{ favoris.url }}</a></div></td>
                 <td> <div class="limit">{{ favoris.nom }}</div> </td>

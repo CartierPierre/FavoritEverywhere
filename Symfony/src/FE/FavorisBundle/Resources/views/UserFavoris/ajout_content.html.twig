@@ -1,6 +1,6 @@
 <!-- Button trigger modal -->
 <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#ajoutModal">
-  Ajouter un favoris
+  Ajouter un favori
 </button>
 
 <!-- Modal -->
@@ -9,7 +9,7 @@
         <div class="modal-content">
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                <h4 class="modal-title" id="ajoutModalLabel">Ajouter un favoris :</h4>
+                <h4 class="modal-title" id="ajoutModalLabel">Ajouter un favori :</h4>
             </div>
 
             <form action="{{ path("fe_favoris_ajoute") }}"  method="post">
@@ -29,10 +29,10 @@
                         <textarea class="form-control" id="description" name="_description" maxlength="255" rows="4" placeholder="Ajouter une description pour décrire le favoris..." defaultValue=""/></textarea>
                     </div>
 
-                    <div class="form-group">
+                    {# <div class="form-group">
                         <input type="checkbox" id="statifiable" name="_statifiable" value="true" checked="true" />
                         <label for="statifiable">Permettre l'utilisation de ce favoris pour les statistiques</label>
-                    </div>
+                    </div> #}
                 </div>
 
                 <div class="modal-footer">

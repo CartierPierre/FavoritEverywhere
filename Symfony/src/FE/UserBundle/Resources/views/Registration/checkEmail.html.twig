@@ -3,5 +3,8 @@
 {% trans_default_domain 'FOSUserBundle' %}
 
 {% block fos_user_content %}
+<div class="jumbotron container">
+    <h1>Félicitation</h1>
     <p>{{ 'registration.check_email'|trans({'%email%': user.email}) }}</p>
+</div>
 {% endblock fos_user_content %}

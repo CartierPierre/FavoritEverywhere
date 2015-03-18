@@ -3,7 +3,7 @@
 {% trans_default_domain 'FOSUserBundle' %}
 
 {% block fos_user_content %}
-    <div class="jumbotron">
+    <div class="jumbotron container">
         <h1>Profil du compte</h1>
         {% include "FOSUserBundle:Profile:show_content.html.twig" %}
         <p><a class="btn btn-primary" href="edit" role="button">{{ 'profile.edit.submit'|trans }}</a></p>

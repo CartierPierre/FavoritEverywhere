@@ -28,10 +28,10 @@
                         <textarea class="form-control" id="description" name="_description" maxlength="255" rows="4" />{{ favoris.description }}</textarea>
                     </div>
 
-                    <div class="form-group">
+                    {# <div class="form-group">
                         <input type="checkbox" id="statifiable" name="_statifiable" value="true" {{ (favoris.statifiable == 1)?'checked="true"':'' }}/>
                         <label for="statifiable">Permettre l'utilisation de ce favoris pour les statistiques</label>
-                    </div>
+                    </div> #}
                     <input type="hidden" name="_id" value="{{ favoris.id }}" />
                 </div>
 
